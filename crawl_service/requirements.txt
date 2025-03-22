@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+selenium
+psycopg2
+python-dotenv
+requests

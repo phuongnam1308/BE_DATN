@@ -1,5 +1,6 @@
 import psycopg2
 from config import CRAWL_DB_CONFIG, TRAINING_DB_CONFIG, DASHBOARD_DB_CONFIG
+from datetime import datetime, timedelta
 
 def connect_crawl_db():
     return psycopg2.connect(**CRAWL_DB_CONFIG)
@@ -59,7 +60,15 @@ def save_classified_result(content, url, label, probability):
 def fetch_display_data(limit):
     conn = connect_training_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT content, url, label, probability FROM display_data ORDER BY processed_at DESC LIMIT %s;", (limit,))
+    # Lấy thời điểm hiện tại trừ đi 10 phút
+    ten_minutes_ago = datetime.now() - timedelta(minutes=10)
+    cursor.execute("""
+        SELECT content, url, label, probability 
+        FROM display_data 
+        WHERE processed_at >= %s 
+        ORDER BY processed_at DESC 
+        LIMIT %s;
+    """, (ten_minutes_ago, limit))
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -95,7 +104,13 @@ def fetch_fake_political_news(limit):
 def fetch_raw_fanpage_facebook(limit):
     conn = connect_crawl_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT content FROM raw_fanpage_facebook ORDER BY id DESC LIMIT %s;", (limit,))
+    # Lấy toàn bộ danh sách, không giới hạn thời gian
+    cursor.execute("""
+        SELECT content 
+        FROM raw_fanpage_facebook 
+        ORDER BY id DESC 
+        LIMIT %s;
+    """, (limit,))
     rows = cursor.fetchall()
     cursor.close()
     conn.close()

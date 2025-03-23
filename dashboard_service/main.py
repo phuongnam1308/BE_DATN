@@ -1,13 +1,15 @@
 from fastapi import FastAPI
-from database import connect_db
+from routes import router
+from config import DASHBOARD_SERVICE_PORT
+from database import create_tables
 
-app = FastAPI()
+app = FastAPI(title="Dashboard Service")
 
-@app.get("/dashboard/")
-def get_dashboard():
-    conn = connect_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM dataset_training;")
-    results = cursor.fetchall()
-    conn.close()
-    return {"data": results}
+create_tables()
+app.include_router(router)
+
+if __name__ == "__main__":
+    import uvicorn
+    from multiprocessing import freeze_support
+    freeze_support()
+    uvicorn.run(app, host="0.0.0.0", port=DASHBOARD_SERVICE_PORT)

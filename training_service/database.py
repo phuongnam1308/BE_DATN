@@ -20,11 +20,12 @@ def create_tables():
         );
     """)
     
+    # Sửa cột url để cho phép NULL
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS display_data (
             id SERIAL PRIMARY KEY,
             content TEXT NOT NULL,
-            url TEXT NOT NULL,
+            url TEXT,  -- Bỏ NOT NULL
             label TEXT NOT NULL,
             probability FLOAT NOT NULL,
             processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -35,7 +36,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS normal_news (
             id SERIAL PRIMARY KEY,
             content TEXT NOT NULL,
-            url TEXT NOT NULL,
+            url TEXT,  -- Bỏ NOT NULL
             probability FLOAT NOT NULL,
             processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
@@ -45,7 +46,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS fake_political_news (
             id SERIAL PRIMARY KEY,
             content TEXT NOT NULL,
-            url TEXT NOT NULL,
+            url TEXT,  -- Bỏ NOT NULL
             probability FLOAT NOT NULL,
             processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
@@ -55,7 +56,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS fake_social_news (
             id SERIAL PRIMARY KEY,
             content TEXT NOT NULL,
-            url TEXT NOT NULL,
+            url TEXT,  -- Bỏ NOT NULL
             probability FLOAT NOT NULL,
             processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );

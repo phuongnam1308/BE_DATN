@@ -10,3 +10,14 @@ class CrawlResponse(BaseModel):
     url: str
     posts: List[str]
     message: str
+
+class TextInput(BaseModel):
+    content: str
+    url: str | None = None
+
+class ClassifiedInput(BaseModel):
+    content: str
+    url: str | None = None
+    label: str
+    probability: float
+    probabilities: dict

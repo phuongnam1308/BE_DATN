@@ -18,7 +18,7 @@ CRAWL_DB_CONFIG = {
     "port": get_env_var("CRAWL_DB_PORT", "5432"),
     "database": get_env_var("CRAWL_DB_NAME", "crawl_db"),
     "user": get_env_var("CRAWL_DB_USER", "postgres"),
-    "password": get_env_var("CRAWL_DB_PASSWORD", "123456789")
+    "password": get_env_var("CRAWL_DB_PASSWORD", "để mật khẩu của bạn")
 }
 
 TRAINING_DB_CONFIG = {
@@ -26,10 +26,10 @@ TRAINING_DB_CONFIG = {
     "port": get_env_var("DASHBOARD_DB_PORT", "5432"),
     "database": get_env_var("DASHBOARD_DB_NAME", "dashboard_db"),
     "user": get_env_var("DASHBOARD_DB_USER", "postgres"),
-    "password": get_env_var("DASHBOARD_DB_PASSWORD", "123456789")
+    "password": get_env_var("DASHBOARD_DB_PASSWORD", "để mật khẩu postgreSQL của bạn")
 }
 
-MODEL_PATH = get_env_var("MODEL_PATH", "D:/AI_FITHOU/DATNv2/BE_DATN/training_service/model.pth")
+MODEL_PATH = get_env_var("MODEL_PATH", "vị trí để file model .pth của bạn")
 TRAINING_SERVICE_PORT = int(get_env_var("TRAINING_SERVICE_PORT", "8002"))
 PHOBERT_MODEL_NAME = get_env_var("PHOBERT_MODEL_NAME", "vinai/phobert-base")
 NUM_CLASSES = int(get_env_var("NUM_CLASSES", "3"))

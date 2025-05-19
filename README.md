@@ -45,7 +45,7 @@ Khi tất cả các dịch vụ và frontend đã chạy, dự án sẽ hoạt �
 # Dự án của tôi
 
 Ảnh các kết quả crawl :
-![Ảnh kết quả crawl](https://github.com/phuongnam1308/BE_DATN/blob/main/ketquatesttay.png](https://github.com/phuongnam1308/BE_DATN/blob/main/kqloccrawl.pdf)
+![Ảnh kết quả crawl](https://github.com/phuongnam1308/BE_DATN/blob/main/kqloccrawl.pdf)
 
 Ảnh kết quả tay :
 ![Ảnh kết quả nhập tay](https://github.com/phuongnam1308/BE_DATN/blob/main/ketquatesttay.png)
